@@ -8,6 +8,8 @@
 import UIKit
 import MusicKit
 
+
+
 class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDataSource, UIPickerViewDelegate,UIPickerViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView.tag == 0 {
@@ -27,31 +29,22 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
         }
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if tableView.tag == 0 {
-            
-        }
-        if tableView.tag == 1 {
-            
-        }
-    }
-    
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return dataList.count
-    }
-    
+  
+  
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return dataList.count
     }
     
-    @IBOutlet weak var testPickerView: UIPickerView!
-    
-    let dataList = [[Int](0...24), [Int](0...60), [Int](0...60)]
-    
     @IBOutlet weak var artistTableView: UITableView!
     
     @IBOutlet weak var genreTableView: UITableView!
+    
+
+    
+    //-----------------------pikerView.start----------------------
+    @IBOutlet weak var testPickerView: UIPickerView!
+    
+    let dataList = [[Int](0...24), [Int](0...60), [Int](0...60)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +53,6 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
         artistTableView.delegate = self
         genreTableView.dataSource = self
         genreTableView.delegate = self
-        
         
         //時間設定の定義
         let hStr = UILabel()
@@ -98,4 +90,55 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
             })
         }
     }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return dataList.count
+    }
+    
+    //コンポーネントの個数
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+  
+    }
+    
+    //コンポーネントのデータの個数
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+            return dataList[component].count
+        }
+    
+    //データを返す
+    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView
+       {
+           let pickerLabel = UILabel()
+           pickerLabel.textAlignment = NSTextAlignment.left
+           pickerLabel.text = String(dataList[component][row])
+    
+           return pickerLabel
+       }
+    
+    
+    //-----------------------pikerView.finish----------------------
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
+
+
+
+
+
+//  疑問
+
+//pikerViewのコンポーネントとは
+//
+//
+//
+//
+//
