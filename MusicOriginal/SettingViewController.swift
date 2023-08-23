@@ -11,20 +11,23 @@ import MusicKit
 
 
 class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDataSource, UIPickerViewDelegate,UIPickerViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView.tag == 0 {
             return 10
-        }
-        if tableView.tag == 1 {
+        } else if tableView.tag == 1 {
             return 20
+        } else {
+            return 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView.tag == 0 {
            
-        }
-        if tableView.tag == 1 {
+        } else if tableView.tag == 1 {
+            
+        } else {
             
         }
     }
@@ -41,6 +44,10 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
     
 
     
+    
+    
+    
+    
     //-----------------------pikerView.start----------------------
     @IBOutlet weak var testPickerView: UIPickerView!
     
@@ -48,7 +55,14 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //.......tableView
+        func tableView(_ tableView: UITableView,numberOfRowsInSection section: Int) -> Int{
+            return 0
+        }
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            return UITableViewCell()
+        }
+        //.......tableView
         artistTableView.delegate = self
         artistTableView.delegate = self
         genreTableView.dataSource = self
@@ -97,7 +111,7 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
     
     //コンポーネントの個数
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-  
+        return 1
     }
     
     //コンポーネントのデータの個数
