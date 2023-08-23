@@ -24,11 +24,14 @@ class SettingViewController: UIViewController, UITableViewDelegate,UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView.tag == 0 {
-           
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ArtistCell")!
+            return cell
         } else if tableView.tag == 1 {
-            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "GenreCell")!
+            return cell
         } else {
-            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "")!
+            return cell
         }
     }
     
