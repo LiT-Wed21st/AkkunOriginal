@@ -15,7 +15,11 @@ class StartViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func moveForSetting(_ sender: Any) {
+        let storyboard: UIStoryboard = self.storyboard!
+        let second = storyboard.instantiateViewController(withIdentifier: "setting")
+        self.present(second, animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 
