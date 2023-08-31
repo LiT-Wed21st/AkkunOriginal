@@ -23,7 +23,7 @@ class SearchViewController: UIViewController {
         searchBar.backgroundImage = UIImage()
     }
     
-    // 検索ワードに一致するアーティストを取得する
+    // 検索ワードに一致するアーティストを取得
     func searchArtist(name: String) {
         Task {
             do {
