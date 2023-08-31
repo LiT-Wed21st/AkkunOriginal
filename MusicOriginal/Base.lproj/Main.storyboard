@@ -208,7 +208,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4q-tH-t8K">
-                                                <rect key="frame" x="321" y="0.0" width="24" height="24"/>
+                                                <rect key="frame" x="183.33333333333334" y="0.0" width="24" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="24" id="IK1-0S-gtz"/>
                                                     <constraint firstAttribute="height" constant="24" id="anT-VW-iro"/>
@@ -225,10 +225,10 @@
                                             <constraint firstItem="vZo-04-JVC" firstAttribute="leading" secondItem="x1q-O4-A9a" secondAttribute="leading" constant="30" id="4GJ-S9-dkM"/>
                                             <constraint firstItem="N6D-ve-EFs" firstAttribute="top" secondItem="x1q-O4-A9a" secondAttribute="top" id="4ba-1L-EPB"/>
                                             <constraint firstItem="N6D-ve-EFs" firstAttribute="leading" secondItem="x1q-O4-A9a" secondAttribute="leading" constant="30" id="7F1-yO-KB6"/>
-                                            <constraint firstAttribute="trailing" secondItem="M4q-tH-t8K" secondAttribute="trailing" constant="30" id="8FP-yN-Wtc"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="N6D-ve-EFs" secondAttribute="trailing" constant="20" symbolic="YES" id="Bgn-SL-AR7"/>
                                             <constraint firstItem="vZo-04-JVC" firstAttribute="top" secondItem="N6D-ve-EFs" secondAttribute="bottom" constant="15" id="PMj-XV-jdg"/>
                                             <constraint firstAttribute="bottom" secondItem="vZo-04-JVC" secondAttribute="bottom" constant="30" id="YIr-Q8-PmE"/>
+                                            <constraint firstItem="M4q-tH-t8K" firstAttribute="leading" secondItem="N6D-ve-EFs" secondAttribute="trailing" constant="10" id="dTT-hC-gSG"/>
                                             <constraint firstAttribute="trailing" secondItem="vZo-04-JVC" secondAttribute="trailing" constant="30" id="dWK-8P-Lms"/>
                                             <constraint firstItem="M4q-tH-t8K" firstAttribute="centerY" secondItem="N6D-ve-EFs" secondAttribute="centerY" id="vqQ-Yy-8ZW"/>
                                         </constraints>
