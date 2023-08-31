@@ -17,7 +17,7 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        searchBar.backgroundImage = UIImage()
     }
     
     func searchArtist(name: String) {

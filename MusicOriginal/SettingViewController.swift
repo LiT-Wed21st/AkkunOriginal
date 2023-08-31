@@ -46,9 +46,8 @@ class SettingViewController: UIViewController {
     }
     
     @IBAction func addArtist() {
-        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "searchArtist") as! SearchViewController
-        let nav = self.navigationController
-        nav?.pushViewController(nextVC, animated: true)
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "search") as! SearchViewController
+        self.present(nextVC, animated: true)
     }
 }
 
