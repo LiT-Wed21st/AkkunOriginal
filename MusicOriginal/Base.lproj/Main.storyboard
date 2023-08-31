@@ -126,10 +126,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t98-u1-hHF">
-                                                <rect key="frame" x="30" y="24" width="315" height="126"/>
+                                                <rect key="frame" x="30" y="39" width="315" height="111"/>
                                                 <subviews>
                                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kDY-Dh-p9j">
-                                                        <rect key="frame" x="0.0" y="0.0" width="315" height="126"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="315" height="111"/>
                                                     </datePicker>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -145,7 +145,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="180" id="4fo-WG-9Hx"/>
                                             <constraint firstAttribute="trailing" secondItem="t98-u1-hHF" secondAttribute="trailing" constant="30" id="ATb-m7-fFf"/>
-                                            <constraint firstItem="t98-u1-hHF" firstAttribute="top" secondItem="kF8-cW-cD5" secondAttribute="bottom" id="b7z-3Q-63h"/>
+                                            <constraint firstItem="t98-u1-hHF" firstAttribute="top" secondItem="kF8-cW-cD5" secondAttribute="bottom" constant="15" id="b7z-3Q-63h"/>
                                             <constraint firstItem="kF8-cW-cD5" firstAttribute="top" secondItem="FoT-ty-iAc" secondAttribute="top" id="dXP-ki-G65"/>
                                             <constraint firstItem="kF8-cW-cD5" firstAttribute="leading" secondItem="FoT-ty-iAc" secondAttribute="leading" constant="30" id="i8e-kZ-Qoy"/>
                                             <constraint firstAttribute="bottom" secondItem="t98-u1-hHF" secondAttribute="bottom" constant="30" id="mhT-Ws-bAz"/>
@@ -157,13 +157,13 @@
                                         <rect key="frame" x="0.0" y="180" width="375" height="384"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vZo-04-JVC">
-                                                <rect key="frame" x="30" y="24" width="315" height="330"/>
+                                                <rect key="frame" x="30" y="39" width="315" height="315"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ov-jS-VrG">
-                                                        <rect key="frame" x="0.0" y="0.0" width="315" height="330"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="315" height="315"/>
                                                         <subviews>
                                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="2Dp-eN-JhP">
-                                                                <rect key="frame" x="0.0" y="0.0" width="315" height="330"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="315" height="315"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <prototypes>
                                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="HgA-Zq-s5r">
@@ -207,16 +207,30 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4q-tH-t8K">
+                                                <rect key="frame" x="321" y="0.0" width="24" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="24" id="IK1-0S-gtz"/>
+                                                    <constraint firstAttribute="height" constant="24" id="anT-VW-iro"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="plus.circle.fill" catalog="system"/>
+                                                <connections>
+                                                    <action selector="addArtist" destination="tc6-9J-U2b" eventType="touchUpInside" id="nQK-cb-xvI"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="vZo-04-JVC" firstAttribute="leading" secondItem="x1q-O4-A9a" secondAttribute="leading" constant="30" id="4GJ-S9-dkM"/>
                                             <constraint firstItem="N6D-ve-EFs" firstAttribute="top" secondItem="x1q-O4-A9a" secondAttribute="top" id="4ba-1L-EPB"/>
                                             <constraint firstItem="N6D-ve-EFs" firstAttribute="leading" secondItem="x1q-O4-A9a" secondAttribute="leading" constant="30" id="7F1-yO-KB6"/>
+                                            <constraint firstAttribute="trailing" secondItem="M4q-tH-t8K" secondAttribute="trailing" constant="30" id="8FP-yN-Wtc"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="N6D-ve-EFs" secondAttribute="trailing" constant="20" symbolic="YES" id="Bgn-SL-AR7"/>
-                                            <constraint firstItem="vZo-04-JVC" firstAttribute="top" secondItem="N6D-ve-EFs" secondAttribute="bottom" id="PMj-XV-jdg"/>
+                                            <constraint firstItem="vZo-04-JVC" firstAttribute="top" secondItem="N6D-ve-EFs" secondAttribute="bottom" constant="15" id="PMj-XV-jdg"/>
                                             <constraint firstAttribute="bottom" secondItem="vZo-04-JVC" secondAttribute="bottom" constant="30" id="YIr-Q8-PmE"/>
                                             <constraint firstAttribute="trailing" secondItem="vZo-04-JVC" secondAttribute="trailing" constant="30" id="dWK-8P-Lms"/>
+                                            <constraint firstItem="M4q-tH-t8K" firstAttribute="centerY" secondItem="N6D-ve-EFs" secondAttribute="centerY" id="vqQ-Yy-8ZW"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gmk-aj-p9V">
@@ -256,8 +270,11 @@
                     <navigationItem key="navigationItem" id="gse-3O-sw0"/>
                     <connections>
                         <outlet property="artistTableView" destination="2Dp-eN-JhP" id="FnJ-Ez-yil"/>
+                        <outlet property="artistsView" destination="vZo-04-JVC" id="weC-g6-JH9"/>
                         <outlet property="button" destination="RHv-tt-Zgj" id="7W3-Dl-JDd"/>
+                        <outlet property="innerArtistsView" destination="2ov-jS-VrG" id="cLQ-Sv-qeU"/>
                         <outlet property="timePicker" destination="kDY-Dh-p9j" id="B1B-gq-NVd"/>
+                        <outlet property="timeView" destination="t98-u1-hHF" id="N5a-EN-yKW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ik-QH-nbT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -267,6 +284,7 @@
     </scenes>
     <color key="tintColor" systemColor="systemIndigoColor"/>
     <resources>
+        <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

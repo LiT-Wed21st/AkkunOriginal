@@ -13,6 +13,9 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var artistTableView: UITableView!
     @IBOutlet weak var timePicker: UIDatePicker!
     @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var timeView: UIView!
+    @IBOutlet weak var artistsView: UIView!
+    @IBOutlet weak var innerArtistsView: UIView!
     
     var count:Int = 0
     var selectedArtists: [Artist] = []
@@ -23,6 +26,21 @@ class SettingViewController: UIViewController {
         
         button.layer.cornerRadius = 24
         button.layer.masksToBounds = true
+        
+        timeView.layer.cornerRadius = 15
+        timeView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        timeView.layer.shadowColor = UIColor.black.cgColor
+        timeView.layer.shadowOpacity = 0.2
+        timeView.layer.shadowRadius = 4
+        
+        artistsView.layer.cornerRadius = 15
+        artistsView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        artistsView.layer.shadowColor = UIColor.black.cgColor
+        artistsView.layer.shadowOpacity = 0.2
+        artistsView.layer.shadowRadius = 4
+        
+        innerArtistsView.layer.cornerRadius = 15
+        innerArtistsView.layer.masksToBounds = true
         searchController.searchBar.placeholder = "検索したい文字列を入力してください"
 //        artistTableView.tableHeaderView = searchController.searchBar
     }
