@@ -256,15 +256,10 @@
                     <navigationItem key="navigationItem" id="gse-3O-sw0"/>
                     <connections>
                         <outlet property="artistTableView" destination="2Dp-eN-JhP" id="FnJ-Ez-yil"/>
+                        <outlet property="button" destination="RHv-tt-Zgj" id="7W3-Dl-JDd"/>
                         <outlet property="timePicker" destination="kDY-Dh-p9j" id="B1B-gq-NVd"/>
                     </connections>
                 </viewController>
-                <view contentMode="scaleToFill" id="oqY-jk-IKw">
-                    <rect key="frame" x="0.0" y="0.0" width="390" height="128"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <viewLayoutGuide key="safeArea" id="uoH-6T-ET1"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </view>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ik-QH-nbT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3964" y="7.389162561576355"/>

@@ -12,6 +12,7 @@ class SettingViewController: UIViewController {
     
     @IBOutlet weak var artistTableView: UITableView!
     @IBOutlet weak var timePicker: UIDatePicker!
+    @IBOutlet weak var button: UIButton!
     
     var count:Int = 0
     var selectedArtists: [Artist] = []
@@ -19,6 +20,9 @@ class SettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        button.layer.cornerRadius = 24
+        button.layer.masksToBounds = true
         searchController.searchBar.placeholder = "検索したい文字列を入力してください"
 //        artistTableView.tableHeaderView = searchController.searchBar
     }
