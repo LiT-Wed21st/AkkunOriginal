@@ -17,8 +17,17 @@ class PlayViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        tableView.reloadData()
+    
+        Task {
+            SystemMusicPlayer.shared.queue = .init(for: songs)
+            do {
+                try await SystemMusicPlayer.shared.play()
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
     }
 }
 
