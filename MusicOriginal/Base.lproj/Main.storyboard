@@ -176,12 +176,21 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="315" height="315"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <prototypes>
-                                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="HgA-Zq-s5r">
+                                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="HgA-Zq-s5r">
                                                                         <rect key="frame" x="0.0" y="50" width="315" height="43.666667938232422"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HgA-Zq-s5r" id="aYa-Jp-tbG">
                                                                             <rect key="frame" x="0.0" y="0.0" width="315" height="43.666667938232422"/>
                                                                             <autoresizingMask key="autoresizingMask"/>
+                                                                            <subviews>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFM-XX-vQp">
+                                                                                    <rect key="frame" x="16" y="11" width="283" height="21"/>
+                                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                                    <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="18"/>
+                                                                                    <nil key="textColor"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                            </subviews>
                                                                         </tableViewCellContentView>
                                                                     </tableViewCell>
                                                                 </prototypes>
@@ -279,10 +288,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="gse-3O-sw0"/>
                     <connections>
-                        <outlet property="artistTableView" destination="2Dp-eN-JhP" id="FnJ-Ez-yil"/>
                         <outlet property="artistsView" destination="vZo-04-JVC" id="weC-g6-JH9"/>
                         <outlet property="button" destination="RHv-tt-Zgj" id="7W3-Dl-JDd"/>
                         <outlet property="innerArtistsView" destination="2ov-jS-VrG" id="cLQ-Sv-qeU"/>
+                        <outlet property="tableView" destination="2Dp-eN-JhP" id="W2E-r4-tsd"/>
                         <outlet property="timePicker" destination="kDY-Dh-p9j" id="B1B-gq-NVd"/>
                         <outlet property="timeView" destination="t98-u1-hHF" id="N5a-EN-yKW"/>
                     </connections>

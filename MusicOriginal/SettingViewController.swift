@@ -10,7 +10,7 @@ import MusicKit
 
 class SettingViewController: UIViewController {
     
-    @IBOutlet weak var artistTableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var timePicker: UIDatePicker!
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var timeView: UIView!
@@ -54,28 +54,14 @@ class SettingViewController: UIViewController {
 extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView.tag == 0 {
-            return selectedArtists.count
-        } else if tableView.tag == 1 {
-            return 20
-        } else {
-            return 0
-        }
+        return selectedArtists.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView.tag == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "artistCell")!
-            let label = cell.viewWithTag(1) as! UILabel
-            label.text = selectedArtists[indexPath.row].name
-            return cell
-        } else if tableView.tag == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "GenreCell")!
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ArtistCell")!
-            return cell
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        let label = cell.viewWithTag(1) as! UILabel
+        label.text = selectedArtists[indexPath.row].name
+        return cell
     }
     
     @IBAction func moveForPlay(_ sender: Any) {
