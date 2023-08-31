@@ -9,6 +9,7 @@ import UIKit
 import MusicKit
 
 class SearchViewController: UIViewController {
+    
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
     
@@ -26,12 +27,10 @@ class SearchViewController: UIViewController {
                 let request = MusicCatalogSearchRequest(term: name, types: [Artist.self])
                 let response = try await request.response()
                 artists = []
-                response.artists.forEach({ artist in
-                    artists.append(artist)
-                })
+                artists.append(contentsOf: response.artists)
                 tableView.reloadData()
             } catch {
-                print("error")
+                print(error)
             }
         }
     }
