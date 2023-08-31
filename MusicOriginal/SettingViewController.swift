@@ -11,10 +11,7 @@ import MusicKit
 class SettingViewController: UIViewController {
     
     @IBOutlet weak var artistTableView: UITableView!
-    @IBOutlet weak var genreTableView: UITableView!
-    
-    @IBOutlet weak var testLabel: UILabel!
-    @IBOutlet weak var testDatePicker: UIDatePicker!
+    @IBOutlet weak var timePicker: UIDatePicker!
     
     var count:Int = 0
     var selectedArtists: [Artist] = []
@@ -30,10 +27,6 @@ class SettingViewController: UIViewController {
         let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "searchArtist") as! SearchViewController
         let nav = self.navigationController
         nav?.pushViewController(nextVC, animated: true)
-    }
-    
-    @IBAction func test() {
-        print(selectedArtists)
     }
 }
 

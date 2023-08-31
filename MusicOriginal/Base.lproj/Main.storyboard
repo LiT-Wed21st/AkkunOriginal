@@ -120,7 +120,6 @@
                                                 <rect key="frame" x="30" y="0.0" width="48" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="h42-hG-Lzn"/>
-                                                    <constraint firstAttribute="width" constant="48" id="zUU-Ql-PKM"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="24"/>
                                                 <nil key="textColor"/>
@@ -129,12 +128,17 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t98-u1-hHF">
                                                 <rect key="frame" x="30" y="24" width="315" height="126"/>
                                                 <subviews>
-                                                    <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kDY-Dh-p9j">
-                                                        <rect key="frame" x="-30" y="0.0" width="375" height="120"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kDY-Dh-p9j">
+                                                        <rect key="frame" x="0.0" y="0.0" width="315" height="126"/>
                                                     </datePicker>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="kDY-Dh-p9j" firstAttribute="leading" secondItem="t98-u1-hHF" secondAttribute="leading" id="816-yr-ob2"/>
+                                                    <constraint firstItem="kDY-Dh-p9j" firstAttribute="top" secondItem="t98-u1-hHF" secondAttribute="top" id="TOx-g9-jhU"/>
+                                                    <constraint firstAttribute="bottom" secondItem="kDY-Dh-p9j" secondAttribute="bottom" id="ZUP-cT-dJO"/>
+                                                    <constraint firstAttribute="trailing" secondItem="kDY-Dh-p9j" secondAttribute="trailing" id="gLG-O0-yZq"/>
+                                                </constraints>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -146,6 +150,7 @@
                                             <constraint firstItem="kF8-cW-cD5" firstAttribute="leading" secondItem="FoT-ty-iAc" secondAttribute="leading" constant="30" id="i8e-kZ-Qoy"/>
                                             <constraint firstAttribute="bottom" secondItem="t98-u1-hHF" secondAttribute="bottom" constant="30" id="mhT-Ws-bAz"/>
                                             <constraint firstItem="t98-u1-hHF" firstAttribute="leading" secondItem="FoT-ty-iAc" secondAttribute="leading" constant="30" id="ogY-Ih-A7u"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="kF8-cW-cD5" secondAttribute="trailing" symbolic="YES" id="uIg-8V-y7J"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x1q-O4-A9a">
@@ -170,6 +175,10 @@
                                                                         </tableViewCellContentView>
                                                                     </tableViewCell>
                                                                 </prototypes>
+                                                                <connections>
+                                                                    <outlet property="dataSource" destination="tc6-9J-U2b" id="Rq7-n2-U8T"/>
+                                                                    <outlet property="delegate" destination="tc6-9J-U2b" id="fVp-wh-beZ"/>
+                                                                </connections>
                                                             </tableView>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -190,10 +199,9 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="アーティスト" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N6D-ve-EFs">
-                                                <rect key="frame" x="30" y="0.0" width="144" height="24"/>
+                                                <rect key="frame" x="30" y="0.0" width="143.33333333333334" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="Ung-gH-feG"/>
-                                                    <constraint firstAttribute="width" constant="144" id="dJ6-ns-Avr"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="24"/>
                                                 <nil key="textColor"/>
@@ -205,6 +213,7 @@
                                             <constraint firstItem="vZo-04-JVC" firstAttribute="leading" secondItem="x1q-O4-A9a" secondAttribute="leading" constant="30" id="4GJ-S9-dkM"/>
                                             <constraint firstItem="N6D-ve-EFs" firstAttribute="top" secondItem="x1q-O4-A9a" secondAttribute="top" id="4ba-1L-EPB"/>
                                             <constraint firstItem="N6D-ve-EFs" firstAttribute="leading" secondItem="x1q-O4-A9a" secondAttribute="leading" constant="30" id="7F1-yO-KB6"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="N6D-ve-EFs" secondAttribute="trailing" constant="20" symbolic="YES" id="Bgn-SL-AR7"/>
                                             <constraint firstItem="vZo-04-JVC" firstAttribute="top" secondItem="N6D-ve-EFs" secondAttribute="bottom" id="PMj-XV-jdg"/>
                                             <constraint firstAttribute="bottom" secondItem="vZo-04-JVC" secondAttribute="bottom" constant="30" id="YIr-Q8-PmE"/>
                                             <constraint firstAttribute="trailing" secondItem="vZo-04-JVC" secondAttribute="trailing" constant="30" id="dWK-8P-Lms"/>
@@ -245,6 +254,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gse-3O-sw0"/>
+                    <connections>
+                        <outlet property="artistTableView" destination="2Dp-eN-JhP" id="FnJ-Ez-yil"/>
+                        <outlet property="timePicker" destination="kDY-Dh-p9j" id="B1B-gq-NVd"/>
+                    </connections>
                 </viewController>
                 <view contentMode="scaleToFill" id="oqY-jk-IKw">
                     <rect key="frame" x="0.0" y="0.0" width="390" height="128"/>
@@ -254,7 +267,7 @@
                 </view>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ik-QH-nbT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3964" y="8"/>
+            <point key="canvasLocation" x="3964" y="7.389162561576355"/>
         </scene>
     </scenes>
     <color key="tintColor" systemColor="systemIndigoColor"/>
