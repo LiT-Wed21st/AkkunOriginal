@@ -10,7 +10,8 @@ import MusicKit
 
 class SearchViewController: UIViewController {
     
-    @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet var searchView: UIStackView!
+    @IBOutlet var searchTextField: UITextField!
     @IBOutlet var tableView: UITableView!
     
     // 検索ワードに一致するアーティストの配列
@@ -19,15 +20,19 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // searchBarのデザイン
-        searchBar.backgroundImage = UIImage()
+        // searchViewのデザイン
+        searchView.layer.cornerRadius = searchView.layer.frame.height / 2
+        searchView.layer.masksToBounds = true
+        
+        // テキストフィールドの内容が変更された時の処理
+        searchTextField.addTarget(self, action: #selector(searchArtist), for: .editingChanged)
     }
     
     // 検索ワードに一致するアーティストを取得
-    func searchArtist(name: String) {
+    @objc func searchArtist(_sender: UITextField) {
         Task {
             do {
-                let request = MusicCatalogSearchRequest(term: name, types: [Artist.self])
+                let request = MusicCatalogSearchRequest(term: _sender.text ?? "", types: [Artist.self])
                 let response = try await request.response()
                 artists = []
                 artists.append(contentsOf: response.artists)
@@ -36,15 +41,6 @@ class SearchViewController: UIViewController {
                 print(error)
             }
         }
-    }
-}
-
-// searchBarの設定
-extension SearchViewController: UISearchBarDelegate {
-    
-    // 文字列が変更された時の処理
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchArtist(name: searchBar.text!)
     }
 }
 
