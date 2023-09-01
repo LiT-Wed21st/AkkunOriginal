@@ -38,12 +38,12 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f1g-vu-tZl">
                                                         <rect key="frame" x="0.0" y="30" width="315" height="210"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="heK-vR-QgV">
-                                                                <rect key="frame" x="82.666666666666686" y="32" width="150" height="146"/>
+                                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" image="play.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="heK-vR-QgV">
+                                                                <rect key="frame" x="82.666666666666657" y="32" width="150" height="146"/>
                                                                 <gestureRecognizers/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="150" id="4C0-Od-87Q"/>
-                                                                    <constraint firstAttribute="width" constant="150" id="qv7-Cd-T57"/>
+                                                                    <constraint firstAttribute="height" constant="150" id="A6s-Rw-fqs"/>
+                                                                    <constraint firstAttribute="width" constant="150" id="cwh-FV-YaL"/>
                                                                 </constraints>
                                                                 <connections>
                                                                     <outletCollection property="gestureRecognizers" destination="GjJ-pc-LFK" appends="YES" id="bUJ-Md-XEN"/>
@@ -52,8 +52,8 @@
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstItem="heK-vR-QgV" firstAttribute="centerY" secondItem="f1g-vu-tZl" secondAttribute="centerY" id="BYM-cv-Uc9"/>
-                                                            <constraint firstItem="heK-vR-QgV" firstAttribute="centerX" secondItem="f1g-vu-tZl" secondAttribute="centerX" id="xLD-pI-gpz"/>
+                                                            <constraint firstItem="heK-vR-QgV" firstAttribute="centerX" secondItem="f1g-vu-tZl" secondAttribute="centerX" id="5c2-yo-h24"/>
+                                                            <constraint firstItem="heK-vR-QgV" firstAttribute="centerY" secondItem="f1g-vu-tZl" secondAttribute="centerY" id="Pjm-u6-PGm"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
@@ -291,7 +291,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EQi-DM-Sos" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3006.1538461538462" y="8.5308056872037916"/>
+            <point key="canvasLocation" x="3234" y="7"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="Cr3-Y9-0RA">

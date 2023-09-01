@@ -35,6 +35,8 @@ class PlayViewController: UIViewController {
         innerSongsView.layer.cornerRadius = 15
         innerSongsView.layer.masksToBounds = true
         
+        artworkImageView.layer.cornerRadius = 75
+        
         tableView.reloadData()
         
         timerLabel.text = timeIntervalToString(timeInterval: time)
@@ -42,9 +44,9 @@ class PlayViewController: UIViewController {
     
     // artworkImageViewがタップされた際の処理
     @IBAction func artwarkImageViewTapped(_ sender: UIGestureRecognizer) {
-        print("tap")
         if !isPlaying {
             playSongs()
+            isPlaying = true
             setArtworkImage(song: songs.first!)
         }
     }
@@ -67,7 +69,7 @@ class PlayViewController: UIViewController {
     func setArtworkImage(song: Song) {
         Task {
             var artworkImage: UIImage!
-            let url = song.artwork!.url(width: 120, height: 120)!
+            let url = song.artwork!.url(width: 150, height: 150)!
             do {
                 let data = try Data(contentsOf: url)
                 artworkImage = UIImage(data: data)

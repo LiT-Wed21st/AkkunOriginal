@@ -17,12 +17,9 @@
 		5DDF27362A754ACD00EA3FD2 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDF27352A754ACD00EA3FD2 /* StartViewController.swift */; };
 		5DDF27382A79139900EA3FD2 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDF27372A79139900EA3FD2 /* SettingViewController.swift */; };
 		5DDF273A2A7A310B00EA3FD2 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDF27392A7A310B00EA3FD2 /* PlayViewController.swift */; };
-		F0DAF5D6843ED3A36DAB5698 /* Pods_MusicOriginal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BA5B04059A484833DDB65DB /* Pods_MusicOriginal.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1284B84BD8ABEDD1FF63E3B7 /* Pods-MusicOriginal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicOriginal.debug.xcconfig"; path = "Target Support Files/Pods-MusicOriginal/Pods-MusicOriginal.debug.xcconfig"; sourceTree = "<group>"; };
-		5C6E9B055F829B5BBF6ED007 /* Pods-MusicOriginal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicOriginal.release.xcconfig"; path = "Target Support Files/Pods-MusicOriginal/Pods-MusicOriginal.release.xcconfig"; sourceTree = "<group>"; };
 		5D3E332C2A5EC36D00A8A53F /* MusicOriginal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicOriginal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D3E332F2A5EC36D00A8A53F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5D3E33312A5EC36D00A8A53F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,7 +32,6 @@
 		5DDF27352A754ACD00EA3FD2 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		5DDF27372A79139900EA3FD2 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		5DDF27392A7A310B00EA3FD2 /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
-		8BA5B04059A484833DDB65DB /* Pods_MusicOriginal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicOriginal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +39,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0DAF5D6843ED3A36DAB5698 /* Pods_MusicOriginal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,8 +50,6 @@
 			children = (
 				5D3E332E2A5EC36D00A8A53F /* MusicOriginal */,
 				5D3E332D2A5EC36D00A8A53F /* Products */,
-				5E848E10E17DA2644306DF41 /* Pods */,
-				9E8D1BA0B7DBBBDC3B9E32D8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,23 +79,6 @@
 			path = MusicOriginal;
 			sourceTree = "<group>";
 		};
-		5E848E10E17DA2644306DF41 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				1284B84BD8ABEDD1FF63E3B7 /* Pods-MusicOriginal.debug.xcconfig */,
-				5C6E9B055F829B5BBF6ED007 /* Pods-MusicOriginal.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		9E8D1BA0B7DBBBDC3B9E32D8 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				8BA5B04059A484833DDB65DB /* Pods_MusicOriginal.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -110,11 +86,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5D3E33402A5EC37600A8A53F /* Build configuration list for PBXNativeTarget "MusicOriginal" */;
 			buildPhases = (
-				ED7E94147EA4F676EF2E0FA3 /* [CP] Check Pods Manifest.lock */,
 				5D3E33282A5EC36D00A8A53F /* Sources */,
 				5D3E33292A5EC36D00A8A53F /* Frameworks */,
 				5D3E332A2A5EC36D00A8A53F /* Resources */,
-				27406535F25A7E4935313A18 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -170,48 +144,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		27406535F25A7E4935313A18 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MusicOriginal/Pods-MusicOriginal-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MusicOriginal/Pods-MusicOriginal-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MusicOriginal/Pods-MusicOriginal-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		ED7E94147EA4F676EF2E0FA3 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MusicOriginal-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5D3E33282A5EC36D00A8A53F /* Sources */ = {
@@ -366,10 +298,10 @@
 		};
 		5D3E33412A5EC37600A8A53F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1284B84BD8ABEDD1FF63E3B7 /* Pods-MusicOriginal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6XX6PGKBH6;
@@ -388,18 +320,21 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = works.tsuyu.MusicAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		5D3E33422A5EC37600A8A53F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5C6E9B055F829B5BBF6ED007 /* Pods-MusicOriginal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6XX6PGKBH6;
@@ -416,11 +351,14 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = works.tsuyu.AkkunOriginal;
+				PRODUCT_BUNDLE_IDENTIFIER = works.tsuyu.MusicAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
