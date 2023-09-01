@@ -25,14 +25,14 @@ class SearchViewController: UIViewController {
         searchView.layer.masksToBounds = true
         
         // テキストフィールドの内容が変更された時の処理
-        searchTextField.addTarget(self, action: #selector(searchArtist), for: .editingChanged)
+        searchTextField.addTarget(self, action: #selector(searchArtist(_:)), for: .editingChanged)
     }
     
     // 検索ワードに一致するアーティストを取得
-    @objc func searchArtist(_sender: UITextField) {
+    @objc func searchArtist(_ sender: UITextField) {
         Task {
             do {
-                let request = MusicCatalogSearchRequest(term: _sender.text ?? "", types: [Artist.self])
+                let request = MusicCatalogSearchRequest(term: sender.text ?? "", types: [Artist.self])
                 let response = try await request.response()
                 artists = []
                 artists.append(contentsOf: response.artists)

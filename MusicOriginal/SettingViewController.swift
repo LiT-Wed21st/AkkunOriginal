@@ -71,6 +71,7 @@ class SettingViewController: UIViewController {
             let nextVC = storyboard?.instantiateViewController(withIdentifier: "play") as! PlayViewController
             nextVC.error = error
             nextVC.songs = playlist
+            nextVC.time = timerInterval
             nav.pushViewController(nextVC, animated: true)
         }
     }
