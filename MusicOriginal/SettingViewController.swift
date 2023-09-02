@@ -65,9 +65,21 @@ class SettingViewController: UIViewController {
             } catch {
                 print(error)
             }
+            if songs.isEmpty {
+                let alert = UIAlertController(title: "title", message: "message", preferredStyle: .alert)
+                let defaultAction = UIAlertAction(title: "title", style: .default)
+                alert.addAction(defaultAction)
+                self.present(alert, animated: true)
+                return
+            }
             let (error, playlist) = chooseBestPlaylist(timeInterval: timerInterval, songs: songs)
+            if playlist.isEmpty {
+                let alert = UIAlertController(title: "title", message: "message", preferredStyle: .alert)
+                let defaultAction = UIAlertAction(title: "title", style: .default)
+                alert.addAction(defaultAction)
+                self.present(alert, animated: true)
+            }
             let nav = self.navigationController!
-            
             let nextVC = storyboard?.instantiateViewController(withIdentifier: "play") as! PlayViewController
             nextVC.error = error
             nextVC.songs = playlist
