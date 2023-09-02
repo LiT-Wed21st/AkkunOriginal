@@ -57,6 +57,7 @@ class SettingViewController: UIViewController {
         Task {
             let timerInterval = getTimeInterval()
             var songs: [Song] = []
+            
             do {
                 for artist in selectedArtists {
                     let artistWithTopSongs = try await artist.with([.topSongs])
@@ -65,20 +66,26 @@ class SettingViewController: UIViewController {
             } catch {
                 print(error)
             }
+            
             if songs.isEmpty {
-                let alert = UIAlertController(title: "title", message: "message", preferredStyle: .alert)
-                let defaultAction = UIAlertAction(title: "title", style: .default)
-                alert.addAction(defaultAction)
-                self.present(alert, animated: true)
+                showAlert()
                 return
             }
-            let (error, playlist) = chooseBestPlaylist(timeInterval: timerInterval, songs: songs)
-            if playlist.isEmpty {
-                let alert = UIAlertController(title: "title", message: "message", preferredStyle: .alert)
-                let defaultAction = UIAlertAction(title: "title", style: .default)
-                alert.addAction(defaultAction)
-                self.present(alert, animated: true)
+            
+            if songs.map({ song in
+                return song.duration!
+            }).reduce(0, +) < timerInterval {
+                showAlert()
+                return
             }
+            
+            let (error, playlist) = chooseBestPlaylist(timeInterval: timerInterval, songs: songs)
+            
+            if playlist.isEmpty {
+                showAlert()
+                return
+            }
+            
             let nav = self.navigationController!
             let nextVC = storyboard?.instantiateViewController(withIdentifier: "play") as! PlayViewController
             nextVC.error = error
@@ -99,8 +106,10 @@ class SettingViewController: UIViewController {
     func chooseBestPlaylist(timeInterval: TimeInterval, songs: [Song]) -> (TimeInterval, [Song]) {
         var minimumError = timeInterval
         var bestPlaylist: [Song] = []
+        
         for _ in 1..<50 {
             let (error, playlist) = createRandomPlaylist(timeInterval: timeInterval, songs: songs)
+            
             if error < minimumError {
                 minimumError = error
                 bestPlaylist = playlist
@@ -114,9 +123,11 @@ class SettingViewController: UIViewController {
         var remainingTime = timeInterval
         var remainingSongs = songs
         var randomPlaylist: [Song] = []
+        
         while remainingTime > 0 {
             let randomInt = Int.random(in: 0..<remainingSongs.count)
             let selectedSong = remainingSongs.remove(at: randomInt)
+            
             if selectedSong.duration! < remainingTime {
                 remainingTime -= selectedSong.duration!
                 randomPlaylist.append(selectedSong)
@@ -125,6 +136,14 @@ class SettingViewController: UIViewController {
             }
         }
         return (remainingTime, randomPlaylist)
+    }
+    
+    //アラートを表示
+    func showAlert() {
+        let alert = UIAlertController(title: "title", message: "message", preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "title", style: .default)
+        alert.addAction(defaultAction)
+        self.present(alert, animated: true)
     }
 }
 
