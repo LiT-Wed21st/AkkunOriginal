@@ -68,21 +68,21 @@ class SettingViewController: UIViewController {
             }
             
             if songs.isEmpty {
-                showAlert()
+                showAlert(message: "曲を取得できませんでした。アーティストを追加してください。")
                 return
             }
             
             if songs.map({ song in
                 return song.duration!
             }).reduce(0, +) < timerInterval {
-                showAlert()
+                showAlert(message: "曲が足りません。よりたくさんのアーティストを追加してください。")
                 return
             }
             
             let (error, playlist) = chooseBestPlaylist(timeInterval: timerInterval, songs: songs)
             
             if playlist.isEmpty {
-                showAlert()
+                showAlert(message: "プレイリストを作成できませんでした。時間を増やしてください。")
                 return
             }
             
@@ -139,9 +139,9 @@ class SettingViewController: UIViewController {
     }
     
     //アラートを表示
-    func showAlert() {
-        let alert = UIAlertController(title: "title", message: "message", preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: "title", style: .default)
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "エラー", message: message, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .default)
         alert.addAction(defaultAction)
         self.present(alert, animated: true)
     }
