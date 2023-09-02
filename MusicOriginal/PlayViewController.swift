@@ -7,19 +7,19 @@
 
 import UIKit
 import MusicKit
+import MediaPlayer
 
 class PlayViewController: UIViewController {
     
-    @IBOutlet var playView: UIView!
     @IBOutlet var songsView: UIView!
     @IBOutlet var innerSongsView: UIView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var artworkImageView: UIImageView!
     @IBOutlet var timerLabel: UILabel!
+    @IBOutlet var playButton: UIButton!
     
     var songs: [Song] = []
     var error: TimeInterval!
-    var isPlaying = false
     var timer: Timer!
     var time: TimeInterval!
 
@@ -35,20 +35,21 @@ class PlayViewController: UIViewController {
         innerSongsView.layer.cornerRadius = 15
         innerSongsView.layer.masksToBounds = true
         
-        artworkImageView.layer.cornerRadius = 75
+        artworkImageView.layer.cornerRadius = artworkImageView.layer.frame.width / 2
+        
+        playButton.layer.cornerRadius = playButton.layer.frame.width / 2
         
         tableView.reloadData()
         
         timerLabel.text = timeIntervalToString(timeInterval: time)
+        setArtworkImage(song: songs.first!)
     }
     
-    // artworkImageViewがタップされた際の処理
-    @IBAction func artwarkImageViewTapped(_ sender: UIGestureRecognizer) {
-        if !isPlaying {
-            playSongs()
-            isPlaying = true
-            setArtworkImage(song: songs.first!)
-        }
+    // playButtonがタップされた際の処理
+    @IBAction func playButtonTapped(_ sender: UIButton) {
+        sender.isHidden = true
+        playSongs()
+        startTimer()
     }
     
     // 曲を再生
@@ -60,23 +61,29 @@ class PlayViewController: UIViewController {
             } catch {
                 print(error.localizedDescription)
             }
-            timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
-                
-            })
         }
     }
     
+    func startTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [self] _ in
+            time -= 1.0
+            timerLabel.text = timeIntervalToString(timeInterval: time)
+        })
+    }
+    
     func setArtworkImage(song: Song) {
-        Task {
-            var artworkImage: UIImage!
-            let url = song.artwork!.url(width: 150, height: 150)!
-            do {
-                let data = try Data(contentsOf: url)
-                artworkImage = UIImage(data: data)
-            } catch {
-                print(error)
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            guard let self = self else { return }
+
+            if let artwork = song.artwork, let url = artwork.url(width: 240, height: 240) {
+                if let data = try? Data(contentsOf: url) {
+                    DispatchQueue.main.async {
+                        self.artworkImageView.backgroundColor = UIColor(cgColor: artwork.backgroundColor!)
+                        let artworkImage = UIImage(data: data)
+                        self.artworkImageView.image = artworkImage
+                    }
+                }
             }
-            artworkImageView.image = artworkImage
         }
     }
     

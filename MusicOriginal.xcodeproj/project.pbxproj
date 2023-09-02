@@ -14,7 +14,6 @@
 		5D3E333C2A5EC37600A8A53F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D3E333A2A5EC37600A8A53F /* LaunchScreen.storyboard */; };
 		5D94C81F2A9623800078F6D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D94C81E2A9623800078F6D2 /* ViewController.swift */; };
 		5D94C8212A9F3EF50078F6D2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D94C8202A9F3EF50078F6D2 /* SearchViewController.swift */; };
-		5DDF27362A754ACD00EA3FD2 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDF27352A754ACD00EA3FD2 /* StartViewController.swift */; };
 		5DDF27382A79139900EA3FD2 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDF27372A79139900EA3FD2 /* SettingViewController.swift */; };
 		5DDF273A2A7A310B00EA3FD2 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDF27392A7A310B00EA3FD2 /* PlayViewController.swift */; };
 /* End PBXBuildFile section */
@@ -29,7 +28,6 @@
 		5D3E333D2A5EC37600A8A53F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D94C81E2A9623800078F6D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5D94C8202A9F3EF50078F6D2 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		5DDF27352A754ACD00EA3FD2 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		5DDF27372A79139900EA3FD2 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		5DDF27392A7A310B00EA3FD2 /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,15 +64,14 @@
 			children = (
 				5D3E332F2A5EC36D00A8A53F /* AppDelegate.swift */,
 				5D3E33312A5EC36D00A8A53F /* SceneDelegate.swift */,
-				5DDF27352A754ACD00EA3FD2 /* StartViewController.swift */,
+				5D94C81E2A9623800078F6D2 /* ViewController.swift */,
 				5DDF27372A79139900EA3FD2 /* SettingViewController.swift */,
 				5D94C8202A9F3EF50078F6D2 /* SearchViewController.swift */,
+				5DDF27392A7A310B00EA3FD2 /* PlayViewController.swift */,
 				5D3E33352A5EC36D00A8A53F /* Main.storyboard */,
 				5D3E33382A5EC37600A8A53F /* Assets.xcassets */,
 				5D3E333A2A5EC37600A8A53F /* LaunchScreen.storyboard */,
 				5D3E333D2A5EC37600A8A53F /* Info.plist */,
-				5DDF27392A7A310B00EA3FD2 /* PlayViewController.swift */,
-				5D94C81E2A9623800078F6D2 /* ViewController.swift */,
 			);
 			path = MusicOriginal;
 			sourceTree = "<group>";
@@ -153,7 +150,6 @@
 				5D94C81F2A9623800078F6D2 /* ViewController.swift in Sources */,
 				5D94C8212A9F3EF50078F6D2 /* SearchViewController.swift in Sources */,
 				5DDF27382A79139900EA3FD2 /* SettingViewController.swift in Sources */,
-				5DDF27362A754ACD00EA3FD2 /* StartViewController.swift in Sources */,
 				5D3E33302A5EC36D00A8A53F /* AppDelegate.swift in Sources */,
 				5DDF273A2A7A310B00EA3FD2 /* PlayViewController.swift in Sources */,
 				5D3E33322A5EC36D00A8A53F /* SceneDelegate.swift in Sources */,
