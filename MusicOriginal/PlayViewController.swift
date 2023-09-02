@@ -8,6 +8,7 @@
 import UIKit
 import MusicKit
 import MediaPlayer
+import MBCircularProgressBar
 
 class PlayViewController: UIViewController {
     
@@ -17,6 +18,7 @@ class PlayViewController: UIViewController {
     @IBOutlet var artworkImageView: UIImageView!
     @IBOutlet var timerLabel: UILabel!
     @IBOutlet var playButton: UIButton!
+    @IBOutlet var progressBar: MBCircularProgressBarView!
     
     var songs: [Song] = []
     var error: TimeInterval!
@@ -38,6 +40,9 @@ class PlayViewController: UIViewController {
         artworkImageView.layer.cornerRadius = artworkImageView.layer.frame.width / 2
         
         playButton.layer.cornerRadius = playButton.layer.frame.width / 2
+        
+        progressBar.maxValue = time
+        progressBar.value = 0
         
         tableView.reloadData()
         
@@ -67,6 +72,7 @@ class PlayViewController: UIViewController {
     func startTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [self] _ in
             time -= 1.0
+            progressBar.value = progressBar.maxValue - time
             timerLabel.text = timeIntervalToString(timeInterval: time)
         })
     }

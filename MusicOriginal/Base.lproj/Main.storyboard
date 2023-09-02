@@ -38,6 +38,40 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f1g-vu-tZl">
                                                         <rect key="frame" x="0.0" y="60" width="315" height="315"/>
                                                         <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jpM-6x-O2k" customClass="MBCircularProgressBarView">
+                                                                <rect key="frame" x="22.666666666666657" y="22.666666666666657" width="270" height="270"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                                        <real key="value" value="100"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="progressRotationAngle">
+                                                                        <real key="value" value="50"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="progressAngle">
+                                                                        <real key="value" value="100"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                                        <real key="value" value="60"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showValueString" value="NO"/>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
+                                                                        <color key="value" systemColor="systemIndigoColor"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="progressStrokeColor">
+                                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="progressLineWidth">
+                                                                        <real key="value" value="4"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="progressCapType">
+                                                                        <integer key="value" value="1"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="emptyLineWidth">
+                                                                        <real key="value" value="0.0"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
                                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="heK-vR-QgV">
                                                                 <rect key="frame" x="37.666666666666686" y="37.666666666666657" width="240" height="239.99999999999997"/>
                                                                 <gestureRecognizers/>
@@ -59,10 +93,14 @@
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
+                                                            <constraint firstItem="jpM-6x-O2k" firstAttribute="top" secondItem="heK-vR-QgV" secondAttribute="top" constant="-15" id="1Sj-qi-NLE"/>
+                                                            <constraint firstItem="jpM-6x-O2k" firstAttribute="trailing" secondItem="heK-vR-QgV" secondAttribute="trailing" constant="15" id="4eV-x0-3sa"/>
                                                             <constraint firstItem="heK-vR-QgV" firstAttribute="centerX" secondItem="f1g-vu-tZl" secondAttribute="centerX" id="5c2-yo-h24"/>
                                                             <constraint firstItem="xAY-Xe-ruA" firstAttribute="top" secondItem="heK-vR-QgV" secondAttribute="top" id="5ch-bs-Yf5"/>
+                                                            <constraint firstItem="jpM-6x-O2k" firstAttribute="bottom" secondItem="heK-vR-QgV" secondAttribute="bottom" constant="15" id="8Do-nk-7od"/>
                                                             <constraint firstItem="xAY-Xe-ruA" firstAttribute="trailing" secondItem="heK-vR-QgV" secondAttribute="trailing" id="9PM-OW-e6J"/>
                                                             <constraint firstItem="xAY-Xe-ruA" firstAttribute="leading" secondItem="heK-vR-QgV" secondAttribute="leading" id="9r1-lI-zdk"/>
+                                                            <constraint firstItem="jpM-6x-O2k" firstAttribute="leading" secondItem="heK-vR-QgV" secondAttribute="leading" constant="-15" id="MjA-Y6-8xO"/>
                                                             <constraint firstItem="heK-vR-QgV" firstAttribute="centerY" secondItem="f1g-vu-tZl" secondAttribute="centerY" id="Pjm-u6-PGm"/>
                                                             <constraint firstItem="xAY-Xe-ruA" firstAttribute="bottom" secondItem="heK-vR-QgV" secondAttribute="bottom" id="eLO-8b-fvL"/>
                                                         </constraints>
@@ -161,6 +199,7 @@
                         <outlet property="artworkImageView" destination="heK-vR-QgV" id="vFb-QC-fhw"/>
                         <outlet property="innerSongsView" destination="1TG-72-cKN" id="a3m-WI-iPa"/>
                         <outlet property="playButton" destination="xAY-Xe-ruA" id="Jai-qK-UsH"/>
+                        <outlet property="progressBar" destination="jpM-6x-O2k" id="lhc-pu-fwr"/>
                         <outlet property="songsView" destination="ERy-4l-0ju" id="Jvj-7G-nCf"/>
                         <outlet property="tableView" destination="4vD-3B-wT3" id="CIM-Jj-G35"/>
                         <outlet property="timerLabel" destination="ueN-xU-6ya" id="6fe-NL-w2N"/>
