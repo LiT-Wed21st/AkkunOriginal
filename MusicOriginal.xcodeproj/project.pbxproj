@@ -97,7 +97,6 @@
 				2DE4A113D142C75CC4874C3D /* Pods-MusicOriginal.debug.xcconfig */,
 				B353CF97A8BBB606B876EF81 /* Pods-MusicOriginal.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

@@ -23,6 +23,8 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.backButtonDisplayMode = .minimal
+        
         // buttonのデザイン
         button.layer.cornerRadius = 24
         button.layer.masksToBounds = true
@@ -57,7 +59,7 @@ class SettingViewController: UIViewController {
         Task {
             let timerInterval = getTimeInterval()
             var songs: [Song] = []
-            
+
             do {
                 for artist in selectedArtists {
                     let artistWithTopSongs = try await artist.with([.topSongs])
@@ -66,26 +68,26 @@ class SettingViewController: UIViewController {
             } catch {
                 print(error)
             }
-            
+
             if songs.isEmpty {
                 showAlert(message: "曲を取得できませんでした。アーティストを追加してください。")
                 return
             }
-            
+
             if songs.map({ song in
                 return song.duration!
             }).reduce(0, +) < timerInterval {
                 showAlert(message: "曲が足りません。よりたくさんのアーティストを追加してください。")
                 return
             }
-            
+
             let (error, playlist) = chooseBestPlaylist(timeInterval: timerInterval, songs: songs)
-            
+
             if playlist.isEmpty {
                 showAlert(message: "プレイリストを作成できませんでした。時間を増やしてください。")
                 return
             }
-            
+
             let nav = self.navigationController!
             let nextVC = storyboard?.instantiateViewController(withIdentifier: "play") as! PlayViewController
             nextVC.error = error
@@ -161,5 +163,13 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         let label = cell.viewWithTag(1) as! UILabel
         label.text = selectedArtists[indexPath.row].name
         return cell
+    }
+    
+    // セルの削除
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            selectedArtists.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
     }
 }

@@ -30,6 +30,9 @@ class PlayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let saveButtonItem = UIBarButtonItem(title: "保存", style: .plain, target: self, action: #selector(savePlaylist))
+        self.navigationItem.rightBarButtonItem = saveButtonItem
+        
         // songsViewのデザイン
         songsView.layer.cornerRadius = 15
         songsView.layer.shadowOffset = CGSize(width: 0, height: 0)
@@ -81,9 +84,13 @@ class PlayViewController: UIViewController {
     // メインのタイマーを開始
     func startTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [self] _ in
-            time -= 1.0
-            progressBar.value = progressBar.maxValue - time
-            timerLabel.text = timeIntervalToString(timeInterval: time)
+            if time > 0 {
+                time -= 1.0
+                progressBar.value = progressBar.maxValue - time
+                timerLabel.text = timeIntervalToString(timeInterval: time)
+            } else {
+                timer.invalidate()
+            }
         })
     }
     
@@ -97,9 +104,15 @@ class PlayViewController: UIViewController {
     // 誤差の調整
     func takeInterval() {
         SystemMusicPlayer.shared.stop()
-        Thread.sleep(forTimeInterval: error / Double(songs.count))
-        currentIndex += 1
-        playSongs(song: songs[currentIndex])
+        if currentIndex < songs.count - 1 {
+            currentIndex += 1
+            DispatchQueue.main.asyncAfter(deadline: .now() + error / Double(songs.count - 1)) { [self] in
+                playSongs(song: songs[currentIndex])
+            }
+        } else {
+            let nav = self.navigationController!
+            nav.popToRootViewController(animated: true)
+        }
     }
     
     // artworkImageViewに画像を表示
@@ -116,9 +129,24 @@ class PlayViewController: UIViewController {
     
     // timeIntervalをStringに変換
     func timeIntervalToString(timeInterval: TimeInterval) -> String {
-        let df = DateComponentsFormatter()
-        df.unitsStyle = .positional
-        return df.string(from: timeInterval)!
+        let df = DateFormatter()
+        df.calendar = Calendar(identifier: .gregorian)
+        df.locale = Locale(identifier: "ja_JP")
+        df.timeZone = TimeZone(identifier: "Asia/Tokyo")!
+        df.dateFormat = "HH:mm:ss"
+        let today = df.calendar.date(bySettingHour: 0, minute: 0, second: 0, of: Date())!
+        var str = df.string(from: Date(timeInterval: timeInterval, since: today))
+        if str.first == "0" {
+            str.removeFirst()
+            if str.first == "0" {
+                str.removeFirst(2)
+            }
+        }
+        return str
+    }
+    
+    @objc func savePlaylist() {
+        print("保存")
     }
 }
 

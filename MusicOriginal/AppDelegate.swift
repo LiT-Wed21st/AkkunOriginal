@@ -12,8 +12,11 @@ import MusicKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        sleep(1)
         Task {
-            await MusicAuthorization.request()
+            do {
+                await MusicAuthorization.request()
+            }
         }
         return true
     }
