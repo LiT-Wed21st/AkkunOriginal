@@ -650,7 +650,7 @@
             <point key="canvasLocation" x="4528.8000000000002" y="6.6502463054187197"/>
         </scene>
     </scenes>
-    <color key="tintColor" systemColor="systemIndigoColor"/>
+    <color key="tintColor" red="0.32549019607843138" green="0.44313725490196076" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="play.fill" catalog="system" width="117" height="128"/>
