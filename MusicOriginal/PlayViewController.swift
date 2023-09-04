@@ -9,6 +9,7 @@ import UIKit
 import MusicKit
 import MediaPlayer
 import MBCircularProgressBar
+import RealmSwift
 
 class PlayViewController: UIViewController {
     
@@ -21,17 +22,29 @@ class PlayViewController: UIViewController {
     @IBOutlet var progressBar: MBCircularProgressBarView!
     
     var songs: [Song] = []
-    var error: TimeInterval!
+    var error: TimeInterval! //
     var timer: Timer!
     var songControllTimer: Timer!
+    var playlistDuration: TimeInterval!
     var time: TimeInterval!
     var currentIndex: Int = 0
+    var artists: [Artist] = []
+    
+    var isSaved = false
+    
+    let realm = try! Realm()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        time = playlistDuration
+        
         let saveButtonItem = UIBarButtonItem(title: "保存", style: .plain, target: self, action: #selector(savePlaylist))
         self.navigationItem.rightBarButtonItem = saveButtonItem
+        
+        if isSaved {
+            self.navigationItem.rightBarButtonItem?.isEnabled = false
+        }
         
         // songsViewのデザイン
         songsView.layer.cornerRadius = 15
@@ -145,8 +158,19 @@ class PlayViewController: UIViewController {
         return str
     }
     
+    // プレイリストを保存
     @objc func savePlaylist() {
-        print("保存")
+        let playlist = Playlist(duration: playlistDuration, songs: songs, artists: artists, error: error)
+        print(realm.configuration)
+        try! realm.write() {
+            realm.add(playlist)
+        }
+        let alert = UIAlertController(title: "保存完了", message: "プレイリストの保存が完了しました。", preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(defaultAction)
+        self.present(alert, animated: true)
+        isSaved = true
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
     }
 }
 

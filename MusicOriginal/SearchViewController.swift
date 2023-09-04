@@ -64,7 +64,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let artist = artists[indexPath.row]
         let nav = self.presentingViewController as! UINavigationController
-        let prevVC = nav.viewControllers.first as! SettingViewController
+        let prevVC = nav.viewControllers[1] as! SettingViewController
         prevVC.selectedArtists.append(artist)
         prevVC.tableView.reloadData()
         self.dismiss(animated: true)
