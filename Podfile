@@ -6,6 +6,7 @@ target 'MusicOriginal' do
   use_frameworks!
 
   pod "MBCircularProgressBar"
+  pod "RealmSwift"
 
   # Pods for MusicOriginal
 
