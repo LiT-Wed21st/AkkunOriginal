@@ -392,6 +392,7 @@
 				DEVELOPMENT_TEAM = 6XX6PGKBH6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MusicOriginal/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Murrenge;
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -426,6 +427,7 @@
 				DEVELOPMENT_TEAM = 6XX6PGKBH6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MusicOriginal/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Murrenge;
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
