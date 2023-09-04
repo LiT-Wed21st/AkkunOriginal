@@ -20,6 +20,7 @@
 		E12334762AA5CAF800EA6961 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12334752AA5CAF800EA6961 /* HistoryViewController.swift */; };
 		E12334792AA5CD8C00EA6961 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12334772AA5CD8C00EA6961 /* HistoryTableViewCell.swift */; };
 		E123347A2AA5CD8C00EA6961 /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E12334782AA5CD8C00EA6961 /* HistoryTableViewCell.xib */; };
+		E123347C2AA6081500EA6961 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = E123347B2AA6081500EA6961 /* splash.png */; };
 		E1C050312AA5A9F4005DCADD /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C050302AA5A9F4005DCADD /* Playlist.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		E12334752AA5CAF800EA6961 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		E12334772AA5CD8C00EA6961 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		E12334782AA5CD8C00EA6961 /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryTableViewCell.xib; sourceTree = "<group>"; };
+		E123347B2AA6081500EA6961 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		E1C050302AA5A9F4005DCADD /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,12 +95,13 @@
 				5DDF27392A7A310B00EA3FD2 /* PlayViewController.swift */,
 				E12334752AA5CAF800EA6961 /* HistoryViewController.swift */,
 				E12334772AA5CD8C00EA6961 /* HistoryTableViewCell.swift */,
-				E12334782AA5CD8C00EA6961 /* HistoryTableViewCell.xib */,
 				E1C050302AA5A9F4005DCADD /* Playlist.swift */,
 				5D3E33352A5EC36D00A8A53F /* Main.storyboard */,
-				5D3E33382A5EC37600A8A53F /* Assets.xcassets */,
 				5D3E333A2A5EC37600A8A53F /* LaunchScreen.storyboard */,
+				E12334782AA5CD8C00EA6961 /* HistoryTableViewCell.xib */,
+				5D3E33382A5EC37600A8A53F /* Assets.xcassets */,
 				5D3E333D2A5EC37600A8A53F /* Info.plist */,
+				E123347B2AA6081500EA6961 /* splash.png */,
 			);
 			path = MusicOriginal;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D3E333C2A5EC37600A8A53F /* LaunchScreen.storyboard in Resources */,
+				E123347C2AA6081500EA6961 /* splash.png in Resources */,
 				5D3E33392A5EC37600A8A53F /* Assets.xcassets in Resources */,
 				E123347A2AA5CD8C00EA6961 /* HistoryTableViewCell.xib in Resources */,
 				5D3E33372A5EC36D00A8A53F /* Main.storyboard in Resources */,

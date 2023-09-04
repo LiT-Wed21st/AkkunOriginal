@@ -20,7 +20,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U8z-4r-unM">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="Qi2-0B-Gji">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash.png" translatesAutoresizingMaskIntoConstraints="NO" id="Qi2-0B-Gji">
                                         <rect key="frame" x="132.66666666666666" y="320" width="127.99999999999997" height="128"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="CZ8-nn-KUT"/>
@@ -60,7 +60,7 @@
     </scenes>
     <color key="tintColor" red="0.32549019607843138" green="0.44313725490196076" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
-        <image name="icon" width="192" height="192"/>
+        <image name="splash.png" width="192" height="192"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
