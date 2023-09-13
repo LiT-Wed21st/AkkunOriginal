@@ -80,6 +80,11 @@ class PlayViewController: UIViewController {
         startTimer()
     }
     
+    @IBAction func back() {
+        let nav = self.navigationController
+        nav?.popViewController(animated: true)
+    }
+    
     // 曲を再生
     func playSongs(song: Song) {
         Task {

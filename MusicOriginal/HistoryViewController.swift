@@ -2,7 +2,7 @@
 //  HistoryViewController.swift
 //  MusicOriginal
 //
-//  Created by Yuri Tsuchikawa on 2023/09/04.
+//  Created by ak ha on 2023/09/04.
 //
 
 import UIKit
@@ -23,6 +23,11 @@ class HistoryViewController: UIViewController {
         tableView.register(UINib(nibName: "HistoryTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         
         playlists = Array(realm.objects(Playlist.self))
+    }
+    
+    @IBAction func back() {
+        guard let nav = self.navigationController else { return }
+        nav.popViewController(animated: true)
     }
     
     // TimeIntervalをStringに変換

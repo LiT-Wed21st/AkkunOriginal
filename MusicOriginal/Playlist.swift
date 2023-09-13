@@ -2,7 +2,7 @@
 //  Playlist.swift
 //  MusicOriginal
 //
-//  Created by Yuri Tsuchikawa on 2023/09/04.
+//  Created by ak ha on 2023/09/04.
 //
 
 import Foundation

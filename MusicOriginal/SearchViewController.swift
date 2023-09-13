@@ -21,7 +21,7 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
 
         // searchViewのデザイン
-        searchView.layer.cornerRadius = searchView.layer.frame.height / 2
+        searchView.layer.cornerRadius = 10
         searchView.layer.masksToBounds = true
         
         // テキストフィールドの内容が変更された時の処理
@@ -66,6 +66,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let nav = self.presentingViewController as! UINavigationController
         let prevVC = nav.viewControllers[1] as! SettingViewController
         prevVC.selectedArtists.append(artist)
+//        prevVC.collectionView.reloadData()
         prevVC.tableView.reloadData()
         self.dismiss(animated: true)
     }

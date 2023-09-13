@@ -11,7 +11,9 @@ import MusicKit
 class SettingViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var timePicker: UIDatePicker!
+    @IBOutlet weak var buttonWrapper: UIView!
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var timeView: UIView!
     @IBOutlet weak var artistsView: UIView!
@@ -23,11 +25,26 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.backButtonDisplayMode = .minimal
-        
         // buttonのデザイン
-        button.layer.cornerRadius = 24
+        button.layer.cornerRadius = button.frame.height / 2
         button.layer.masksToBounds = true
+        button.backgroundColor = .black
+        button.tintColor = .clear
+        button.layer.layoutIfNeeded()
+        let buttonLayer = CAGradientLayer()
+        buttonLayer.frame = button.bounds
+        let color1 = CGColor(red: 0, green: 179 / 255, blue: 203 / 255, alpha: 1)
+        let color2 = CGColor(red: 0, green: 139 / 255, blue: 163 / 255, alpha: 1)
+        buttonLayer.colors = [color1, color2]
+        buttonLayer.locations = [0.0, 1.0]
+        buttonLayer.startPoint = CGPoint(x: 0, y: 0)
+        buttonLayer.endPoint = CGPoint(x: 1, y: 0.1)
+        button.layer.insertSublayer(buttonLayer, at: 0)
+        buttonWrapper.layer.cornerRadius = button.frame.height / 2
+        buttonWrapper.layer.shadowOffset = CGSize(width: 0, height: 0)
+        buttonWrapper.layer.shadowColor = CGColor(red: 0, green: 159 / 255, blue: 183 / 255, alpha: 1)
+        buttonWrapper.layer.shadowOpacity = 0.8
+        buttonWrapper.layer.shadowRadius = 5
         
         // timeViewのデザイン
         timeView.layer.cornerRadius = 15
@@ -46,6 +63,16 @@ class SettingViewController: UIViewController {
         // innerArtistsViewのデザイン
         innerArtistsView.layer.cornerRadius = 15
         innerArtistsView.layer.masksToBounds = true
+        
+//        collectionView.register(UINib(nibName: "ArtistCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cell")
+//        let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+//        flowLayout.estimatedItemSize = CGSize()
+    }
+    
+    // 戻るボタン
+    @IBAction func back() {
+        guard let nav = self.navigationController else { return }
+        nav.popViewController(animated: true)
     }
     
     // アーティストを追加
@@ -152,12 +179,12 @@ class SettingViewController: UIViewController {
 
 // tableViewの設定
 extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
-    
+
     // セルの数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return selectedArtists.count
     }
-    
+
     // セルの内容
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
@@ -165,7 +192,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         label.text = selectedArtists[indexPath.row].name
         return cell
     }
-    
+
     // セルの削除
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -174,3 +201,23 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
+
+//extension SettingViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+//
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return selectedArtists.count
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+//        return cell
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: collectionView.frame.width / 3, height: collectionView.frame.width / 3)
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+//        return 0
+//    }
+//}
