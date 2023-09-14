@@ -66,8 +66,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let nav = self.presentingViewController as! UINavigationController
         let prevVC = nav.viewControllers[1] as! SettingViewController
         prevVC.selectedArtists.append(artist)
-//        prevVC.collectionView.reloadData()
-        prevVC.tableView.reloadData()
+        prevVC.collectionView.reloadData()
         self.dismiss(animated: true)
     }
 }

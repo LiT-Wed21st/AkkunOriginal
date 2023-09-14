@@ -10,13 +10,14 @@ import RealmSwift
 import MusicKit
 
 class Playlist: Object {
+    @Persisted var name = ""
     @Persisted var duration = 0.0
     @Persisted var songIDs = List<String>()
     @Persisted var artistIDs = List<String>()
     @Persisted var createdAt = Date()
     @Persisted var error = 0.0
     
-    convenience init(duration: TimeInterval, songs: [Song], artists: [Artist], error: TimeInterval) {
+    convenience init(name: String ,duration: TimeInterval, songs: [Song], artists: [Artist], error: TimeInterval) {
         self.init()
         
         let songIDList = List<String>()
@@ -31,6 +32,7 @@ class Playlist: Object {
         })
         artistIDList.append(objectsIn: artistIDs)
         
+        self.name = name
         self.duration = duration
         self.songIDs = songIDList
         self.artistIDs = artistIDList

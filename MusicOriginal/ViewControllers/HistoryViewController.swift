@@ -60,28 +60,60 @@ class HistoryViewController: UIViewController {
 
 extension HistoryViewController: UITableViewDataSource, UITableViewDelegate {
     
+    // セルの数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return playlists.count
     }
     
+    // セルの内容
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let playlist = playlists[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! HistoryTableViewCell
-        cell.durationLabel.text = timeIntervalToString(timeInterval: playlist.duration)
+        cell.selectionStyle = .none
+        cell.nameLabel.text = playlist.name
         cell.dateLable.text = "作成日: " + dateToString(date: playlist.createdAt)
+        cell.durationLabel.text = "時間: " + timeIntervalToString(timeInterval: playlist.duration)
+        let artistIDs = Array(playlist.artistIDs)
+        Task {
+            do {
+                for artistID in artistIDs {
+                    let request = MusicCatalogResourceRequest<Artist>(matching: \.id, equalTo: MusicItemID(artistID))
+                    let response = try await request.response()
+                    if let artist = response.items.first {
+                        cell.artists.append(artist)
+                    }
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+            cell.updateView()
+        }
+
         return cell
     }
     
+    // セルの高さ
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
         return cell.frame.height
     }
     
+    // セルが選択された時の処理
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         Task {
+            let loadingView = UIView(frame: view.bounds)
+            let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+            activityIndicator.center = loadingView.center
+            activityIndicator.color = .gray
+            activityIndicator.style = .large
+            activityIndicator.startAnimating()
+            loadingView.addSubview(activityIndicator)
+            view.addSubview(loadingView)
+            
             let playlist = playlists[indexPath.row]
             let songIDs = Array(playlist.songIDs)
             var songs: [Song] = []
+            
             do {
                 for songID in songIDs {
                     let request = MusicCatalogResourceRequest<Song>(matching: \.id, equalTo: MusicItemID(rawValue: songID))
@@ -91,6 +123,8 @@ extension HistoryViewController: UITableViewDataSource, UITableViewDelegate {
             } catch {
                 print(error)
             }
+            
+            loadingView.removeFromSuperview()
             let nav = self.navigationController!
             let nextVC = storyboard?.instantiateViewController(withIdentifier: "play") as! PlayViewController
             nextVC.songs = songs

@@ -20,6 +20,7 @@ class PlayViewController: UIViewController {
     @IBOutlet var timerLabel: UILabel!
     @IBOutlet var playButton: UIButton!
     @IBOutlet var progressBar: MBCircularProgressBarView!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     var songs: [Song] = []
     var error: TimeInterval! //
@@ -164,18 +165,29 @@ class PlayViewController: UIViewController {
     }
     
     // プレイリストを保存
-    @objc func savePlaylist() {
-        let playlist = Playlist(duration: playlistDuration, songs: songs, artists: artists, error: error)
-        print(realm.configuration)
-        try! realm.write() {
-            realm.add(playlist)
-        }
-        let alert = UIAlertController(title: "保存完了", message: "プレイリストの保存が完了しました。", preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: "OK", style: .default)
+    @IBAction func savePlaylist() {
+        var nameTextField: UITextField!
+        let alert = UIAlertController(title: "プレイリスト名", message: nil, preferredStyle: .alert)
+        alert.addTextField(configurationHandler: { textField in
+            nameTextField = textField
+        })
+        let defaultAction = UIAlertAction(title: "保存", style: .default, handler: { [self] _ in
+            guard let name = nameTextField.text else { return }
+            let playlist = Playlist(name: name, duration: playlistDuration, songs: songs, artists: artists, error: error)
+            try! realm.write() {
+                realm.add(playlist)
+            }
+            let alert = UIAlertController(title: "保存完了", message: "プレイリストの保存が完了しました。", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .default)
+            alert.addAction(defaultAction)
+            self.present(alert, animated: true)
+        })
         alert.addAction(defaultAction)
         self.present(alert, animated: true)
+        
+        print("here")
         isSaved = true
-        self.navigationItem.rightBarButtonItem?.isEnabled = false
+        saveButton.isEnabled = !isSaved
     }
 }
 

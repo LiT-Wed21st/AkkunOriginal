@@ -64,9 +64,7 @@ class SettingViewController: UIViewController {
         innerArtistsView.layer.cornerRadius = 15
         innerArtistsView.layer.masksToBounds = true
         
-//        collectionView.register(UINib(nibName: "ArtistCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cell")
-//        let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-//        flowLayout.estimatedItemSize = CGSize()
+        collectionView.register(UINib(nibName: "ArtistCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cell")
     }
     
     // 戻るボタン
@@ -86,6 +84,15 @@ class SettingViewController: UIViewController {
         Task {
             let timerInterval = getTimeInterval()
             var songs: [Song] = []
+            
+            let loadingView = UIView(frame: view.bounds)
+            let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+            activityIndicator.center = loadingView.center
+            activityIndicator.color = .gray
+            activityIndicator.style = .large
+            activityIndicator.startAnimating()
+            loadingView.addSubview(activityIndicator)
+            view.addSubview(loadingView)
 
             do {
                 for artist in selectedArtists {
@@ -97,6 +104,7 @@ class SettingViewController: UIViewController {
             }
 
             if songs.isEmpty {
+                loadingView.removeFromSuperview()
                 showAlert(message: "曲を取得できませんでした。アーティストを追加してください。")
                 return
             }
@@ -104,6 +112,7 @@ class SettingViewController: UIViewController {
             if songs.map({ song in
                 return song.duration!
             }).reduce(0, +) < timerInterval {
+                loadingView.removeFromSuperview()
                 showAlert(message: "曲が足りません。よりたくさんのアーティストを追加してください。")
                 return
             }
@@ -111,10 +120,12 @@ class SettingViewController: UIViewController {
             let (error, playlist) = chooseBestPlaylist(timeInterval: timerInterval, songs: songs)
 
             if playlist.isEmpty {
+                loadingView.removeFromSuperview()
                 showAlert(message: "プレイリストを作成できませんでした。時間を増やしてください。")
                 return
             }
 
+            loadingView.removeFromSuperview()
             let nav = self.navigationController!
             let nextVC = storyboard?.instantiateViewController(withIdentifier: "play") as! PlayViewController
             nextVC.error = error
@@ -168,56 +179,60 @@ class SettingViewController: UIViewController {
         return (remainingTime, randomPlaylist)
     }
     
-    //アラートを表示
+    // アラートを表示
     func showAlert(message: String) {
         let alert = UIAlertController(title: "エラー", message: message, preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: "OK", style: .default)
         alert.addAction(defaultAction)
         self.present(alert, animated: true)
     }
+    
+    // セルが長押しされた際の処理
+    @objc func longPressed(sender: UILongPressGestureRecognizer) {
+        guard sender.state == .began else { return }
+        let touchPoint = sender.location(in: collectionView)
+        guard let indexPath = collectionView.indexPathForItem(at: touchPoint) else { return }
+        let artist = selectedArtists[indexPath.row]
+        let alert = UIAlertController(title: "アーティストを削除", message: "\(artist.name)を削除しますか？", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
+        let deleteAction = UIAlertAction(title: "削除", style: .destructive, handler: { [self] _ in
+            selectedArtists.remove(at: indexPath.row)
+            collectionView.deleteItems(at: [indexPath])
+        })
+        alert.addAction(cancelAction)
+        alert.addAction(deleteAction)
+        self.present(alert, animated: true)
+    }
 }
 
-// tableViewの設定
-extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
+extension SettingViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
-    // セルの数
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return selectedArtists.count
     }
 
-    // セルの内容
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-        let label = cell.viewWithTag(1) as! UILabel
-        label.text = selectedArtists[indexPath.row].name
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ArtistCollectionViewCell
+        cell.label.text = selectedArtists[indexPath.row].name
+        guard let url = selectedArtists[indexPath.row].artwork?.url(width: 256, height: 256) else { return cell }
+        cell.imageView.setImage(url: url)
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressed))
+        longPressRecognizer.allowableMovement = 10
+        cell.addGestureRecognizer(longPressRecognizer)
         return cell
     }
 
-    // セルの削除
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            selectedArtists.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width / 3, height: collectionView.frame.width / 3)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let cell = cell as! ArtistCollectionViewCell
+        cell.layoutIfNeeded()
+        cell.imageView.layer.cornerRadius = cell.imageView.layer.bounds.width / 2
     }
 }
-
-//extension SettingViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-//
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return selectedArtists.count
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-//        return cell
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: collectionView.frame.width / 3, height: collectionView.frame.width / 3)
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 0
-//    }
-//}
